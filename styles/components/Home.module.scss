@@ -1,7 +1,7 @@
 .main {
-    @apply max-w-[500px] w-full;
+  @apply max-w-[500px] w-full;
 
-    &__container {
-        @apply text-red-700;
-    }
+  &__container {
+    @apply text-red-700;
+  }
 }
