@@ -10,11 +10,10 @@ export default function Home() {
   return (
     <Default>
       <Button type={'button'} title={'Primary Button'}></Button>
-      <Textfield/>
+      <Textfield />
       <div>
-        <h1>ghgv</h1>
+        <h1>Default</h1>
       </div>
-      hjgjgvhgv
     </Default>
   )
 }
