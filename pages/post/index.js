@@ -1,6 +1,17 @@
 import AllPost from '@/components/posts/allPost'
 
-export const getStaticProps = async () => {
+// Static Site Generators - SSG
+// export const getStaticProps = async () => {
+//   const res = await fetch('https://jsonplaceholder.typicode.com/users')
+//   const data = await res.json()
+
+//   return {
+//     props: { users: data },
+//   }
+// }
+
+// Server Side Rendering - SSR
+export const getServerSideProps = async () => {
   const res = await fetch('https://jsonplaceholder.typicode.com/users')
   const data = await res.json()
 
