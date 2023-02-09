@@ -1,4 +1,7 @@
 import { useRouter } from 'next/router'
+import { wrapper } from '@/redux/store/store'
+import { setSingleData, singleUserData } from '@/redux/reducers/counterSlice'
+import { useSelector } from 'react-redux'
 
 // When using getStaticProps
 // export const getStaticPaths = async () => {
@@ -29,21 +32,24 @@ import { useRouter } from 'next/router'
 // }
 
 // Server Side Rendering - SSR
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
   const id = context.params.id
   const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
   const data = await res.json()
+  store.dispatch(setSingleData(data))
 
   return {
-    props: { user: data },
+    // props: { user: data },
   }
-}
+})
 
-export default function PostDetails({ user }) {
+export default function PostDetails() {
+  const singleUser = useSelector(singleUserData)
+
   return (
     <div>
-      <h1>{user.name}</h1>
-      <p>{user.username}</p>
+      <h1>{singleUser.name}</h1>
+      <p>{singleUser.username}</p>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import AllPost from '@/components/posts/allPost'
 import { wrapper } from '@/redux/store/store'
-import { setCounter, setData } from '@/redux/reducers/counterSlice'
-import { useDispatch } from 'react-redux'
+import { setCounter, setData, allUser } from '@/redux/reducers/counterSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 // Static Site Generators - SSG
 // export const getStaticProps = async () => {
@@ -24,13 +24,15 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ()
   }
 })
 
-export default function Post({ users }) {
+export default function Post() {
+  const allUsers = useSelector(allUser)
   const dispatch = useDispatch()
+
   return (
     <div>
       <h1>All Post</h1>
       <button onClick={() => dispatch(setCounter())}>Count</button>
-      {/* <AllPost users={users} /> */}
+      <AllPost users={allUsers} />
     </div>
   )
 }
